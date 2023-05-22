@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+
+import { Agenda } from '../model/agenda';
 
 //injeção de dependência dentro das classes do angular
 @Injectable({
@@ -6,11 +9,11 @@ import { Injectable } from '@angular/core';
 })
 export class AgendaService {
 
-  constructor() { }
+  private readonly API = '/assets/agenda.json';
+
+  constructor(private httpClient: HttpClient) { }
 
   list() {
-    return [
-      {_id: '1', title: 'Audiência pública e reunião do CDM', date: '15/06/2023', time: '19:00', place: 'Salão Ouro Negro'}
-    ];
+    return this.httpClient.get(this.API);
   }
 }

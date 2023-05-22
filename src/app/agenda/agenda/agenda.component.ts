@@ -1,3 +1,4 @@
+import { AgendaService } from './../services/agenda.service';
 import { Component, OnInit } from '@angular/core';
 import { Agenda } from '../model/agenda';
 
@@ -8,13 +9,15 @@ import { Agenda } from '../model/agenda';
 })
 export class AgendaComponent implements OnInit {
 
-  agenda: Agenda[] = [
-    {_id: '1', title: 'Audiência pública e reunião do CDM', date: '15/06/2023', time: '19:00', place: 'Salão Ouro Negro'}
-  ];
-  displayedColumns = ['title', 'date', 'time', 'place']
+  agenda: Agenda[] = [];
+  displayedColumns = ['title', 'date', 'time', 'place'];
 
-  constructor() {
+  // AgendaService: AgendaService;
+
+  constructor(private AgendaService: AgendaService) {
     //this.agenda = [];
+    // this.AgendaService = new AgendaService();
+    this.agenda = this.AgendaService.list();
   }
 
   ngOnInit(): void{
