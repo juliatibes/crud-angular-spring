@@ -1,8 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
+import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { AgendaRoutingModule } from './agenda-routing.module';
 import { AgendaComponent } from './agenda/agenda.component';
+
 
 
 @NgModule({
@@ -11,7 +13,8 @@ import { AgendaComponent } from './agenda/agenda.component';
   ],
   imports: [
     CommonModule,
-    AgendaRoutingModule
+    AgendaRoutingModule,
+    AppMaterialModule
   ]
 })
 export class AgendaModule { }
