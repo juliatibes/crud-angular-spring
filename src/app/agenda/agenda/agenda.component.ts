@@ -1,6 +1,7 @@
 import { AgendaService } from './../services/agenda.service';
 import { Component, OnInit } from '@angular/core';
 import { Agenda } from '../model/agenda';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-agenda',
@@ -9,7 +10,7 @@ import { Agenda } from '../model/agenda';
 })
 export class AgendaComponent implements OnInit {
 
-  agenda: Agenda[] = [];
+  agenda$: Observable <Agenda[]>;
   displayedColumns = ['title', 'date', 'time', 'place'];
 
   // AgendaService: AgendaService;
@@ -17,7 +18,7 @@ export class AgendaComponent implements OnInit {
   constructor(private AgendaService: AgendaService) {
     //this.agenda = [];
     // this.AgendaService = new AgendaService();
-    this.agenda = this.AgendaService.list();
+    this.agenda$ = this.AgendaService.list();
   }
 
   ngOnInit(): void{
